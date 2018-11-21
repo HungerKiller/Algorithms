@@ -10,7 +10,7 @@ namespace XUnitTestAlgoLearning
         [InlineData(4, 24)]
         [InlineData(5, 120)]
         [InlineData(6, 720)]
-        public void Test1(int value, int expected)
+        public void TestFactorial(int value, int expected)
         {
             int actual = Factorial.CalculateFactorial(value);
             Assert.Equal(expected, actual);
