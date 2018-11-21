@@ -1,4 +1,5 @@
 ﻿using System;
+using AlgoLearning.Recursive;
 
 namespace AlgoLearning
 {
@@ -7,6 +8,7 @@ namespace AlgoLearning
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+            TowerOfHanoi.hanoi(4, 1, 2, 3);
         }
     }
 }
