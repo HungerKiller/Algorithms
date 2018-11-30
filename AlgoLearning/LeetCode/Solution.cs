@@ -90,7 +90,7 @@ namespace LeetCode
             List<char> charList = new List<char>();
             for (int i = 0; i < s.Length; i++)
             {
-                for(int j = i; j < s.Length; j++)
+                for (int j = i; j < s.Length; j++)
                 {
                     if (charList.Contains(s[j]))
                     {
@@ -115,5 +115,46 @@ namespace LeetCode
         }
 
         #endregion Problem 4
+
+        #region Problem 5
+
+        public static string LongestPalindrome(string s)
+        {
+            if (s == null || s.Length == 0)
+                return "";
+
+            for (int i = 0; i < s.Length; i++)
+            {
+                for (int j = 0; i - j >= 0 && i + j < s.Length; j++)
+                {
+
+                }
+            }
+
+
+            for (int subStringCount = 1; subStringCount <= s.Length; subStringCount++)
+            {
+                int subStringLength = s.Length + 1 - subStringCount;
+                
+            }
+            return s.FirstOrDefault().ToString();
+        }
+
+        private static bool IsPalindrome(string s)
+        {
+            int len = s.Length;
+            bool isPalindrome = true;
+            for (int index = 0; index < len / 2; index++)
+            {
+                if (s[index] != s[len - 1 - index])
+                {
+                    isPalindrome = false;
+                    break;
+                }
+            }
+            return isPalindrome;
+        }
+
+        #endregion Problem 5
     }
 }

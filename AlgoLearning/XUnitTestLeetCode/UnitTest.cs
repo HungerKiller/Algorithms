@@ -6,6 +6,8 @@ namespace XUnitTestLeetCode
 {
     public class UnitTest
     {
+        #region Problem 1
+
         [Theory]
         [MemberData(nameof(Data))]
         public void TestTwoSum(int[] values, int value, int[] expected)
@@ -21,6 +23,10 @@ namespace XUnitTestLeetCode
             new object[] { new int[] { 3, 3 }, 6, new int[] { 0, 1 } }            
         };
 
+        #endregion Problem 1
+
+        #region Problem 3
+
         [Theory]
         [InlineData("abcabcbb", 3)]
         [InlineData("bbbbb", 1)]
@@ -33,6 +39,24 @@ namespace XUnitTestLeetCode
             var actual = Solution.LengthOfLongestSubstring(value);
             Assert.Equal(expected, actual);
         }
-        
+
+        #endregion Problem 3
+
+        #region Problem 5
+
+        [Theory]
+        [InlineData("babad", "bab")]
+        [InlineData("cbbd", "bb")]
+        [InlineData("abcde", "a")]
+        [InlineData("ccc", "ccc")]
+        [InlineData("", "")]
+        [InlineData(null, "")]
+        public void TestLongestPalindrome(string value, string expected)
+        {
+            var actual = Solution.LongestPalindrome(value);
+            Assert.Equal(expected, actual);
+        }
+
+        #endregion Problem 5
     }
 }
