@@ -51,6 +51,8 @@ namespace XUnitTestLeetCode
         [InlineData("ccc", "ccc")]
         [InlineData("", "")]
         [InlineData(null, "")]
+        [InlineData("lphbehiapswjudnbcossedgioawodnwdruaaxhbkwrxyzaxygmnjgwysafuqbmtzwdkihbwkrjefrsgjbrycembzzlwhxneiijgzidhngbmxwkhphoctpilgooitqbpjxhwrekiqupmlcvawaiposqttsdgzcsjqrmlgyvkkipfigttahljdhtksrozehkzgshekeaxezrswvtinyouomqybqsrtegwwqhqivgnyehpzrhgzckpnnpvajqevbzeksvbezoqygjtdouecnhpjibmsgmcqcgxwzlzztdneahixxhwwuehfsiqghgeunpxgvavqbqrelnvhnnyqnjqfysfltclzeoaletjfzskzvcdwhlbmwbdkxnyqappjzwlowslwcbbmcxoiqkjaqqwvkybimebapkorhfdzntodhpbhgmsspgkbetmgkqlolsltpulgsmyapgjeswazvhxedqsypejwuzlvegtusjcsoenrcmypexkjxyduohlvkhwbrtzjnarusbouwamazzejhnetfqbidalfomecehfmzqkhndpkxinzkpxvhwargbwvaeqbzdhxzmmeeozxxtzpylohvdwoqocvutcelgdsnmubyeeeufdaoznxpvdiwnkjliqtgcmvhilndcdelpnilszzerdcuokyhcxjuedjielvngarsgxkemvhlzuprywlypxeezaxoqfges", "pnnp")]
+        [InlineData("bb", "bb")]
         public void TestLongestPalindrome(string value, string expected)
         {
             var actual = Solution.LongestPalindrome(value);
@@ -58,5 +60,19 @@ namespace XUnitTestLeetCode
         }
 
         #endregion Problem 5
+
+        #region Problem 6
+
+        [Theory]
+        [InlineData("PAYPALISHIRING", 3, "PAHNAPLSIIGYIR")]
+        [InlineData("PAYPALISHIRING", 4, "PINALSIGYAHRPI")]
+        [InlineData("A", 1, "A")]
+        public void TestConvert(string value, int num, string expected)
+        {
+            var actual = Solution.Convert(value, num);
+            Assert.Equal(expected, actual);
+        }
+
+        #endregion Problem 6
     }
 }

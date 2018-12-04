@@ -118,43 +118,97 @@ namespace LeetCode
 
         #region Problem 5
 
-        public static string LongestPalindrome(string s)
+        // Time Limit Exceeded
+        public static string LongestPalindrome1(string s)
         {
             if (s == null || s.Length == 0)
                 return "";
-
-            for (int i = 0; i < s.Length; i++)
-            {
-                for (int j = 0; i - j >= 0 && i + j < s.Length; j++)
-                {
-
-                }
-            }
-
-
             for (int subStringCount = 1; subStringCount <= s.Length; subStringCount++)
             {
                 int subStringLength = s.Length + 1 - subStringCount;
-                
+                for (int i = 0; i < subStringCount; i++)
+                {
+                    var subString = s.Substring(i, subStringLength);
+                    int len = subString.Length;
+                    bool resultFound = true;
+                    for (int index = 0; index < len / 2; index++)
+                    {
+                        if (subString[index] != subString[len - 1 - index])
+                        {
+                            resultFound = false;
+                            break;
+                        }
+                    }
+                    if (resultFound) return subString;
+                }
             }
             return s.FirstOrDefault().ToString();
         }
 
-        private static bool IsPalindrome(string s)
+        public static string LongestPalindrome(string s)
         {
-            int len = s.Length;
-            bool isPalindrome = true;
-            for (int index = 0; index < len / 2; index++)
+            if (s == null || s.Length == 0)
+                return "";
+            bool doubleCenter = false;
+            int iCenter = 0;
+            int jLength = 0;
+            for (int i = 0; i < s.Length - 1; i++)
             {
-                if (s[index] != s[len - 1 - index])
+                for (int j = 1; i - j >= 0 && i + j < s.Length; j++)
                 {
-                    isPalindrome = false;
-                    break;
+                    if (s[i - j] == s[i + j])
+                    {
+                        if (jLength < j)
+                        {
+                            iCenter = i;
+                            jLength = j;
+                            doubleCenter = false;
+                        }
+                    }
+                    else
+                        break;
+                }
+                if (s[i] == s[i + 1])
+                {
+                    for (int j = 0; i - j >= 0 && i + 1 + j < s.Length; j++)
+                    {
+                        if (s[i - j] == s[i + 1 + j])
+                        {
+                            if (jLength <= j)
+                            {
+                                iCenter = i;
+                                jLength = j;
+                                doubleCenter = true;
+                            }
+                        }
+                        else
+                            break;
+                    }
                 }
             }
-            return isPalindrome;
+            return s.Substring(iCenter - jLength, doubleCenter ? 2 * jLength + 2 : 2 * jLength + 1);
         }
 
         #endregion Problem 5
+
+        #region Problem 6
+
+        public static string Convert(string s, int numRows)
+        {
+            if (numRows == 1) return s;
+            List<char> newString = new List<char>();
+            for (int row = 0; row < numRows; row++)
+            {
+                for (int j = 0; j * 2 * (numRows - 1) + row < s.Length; j++)
+                {
+                    newString.Add(s[j * 2 * (numRows - 1) + row]);
+                    if(row != 0 && row != numRows - 1 && (j + 1) * 2 * (numRows - 1) - row < s.Length)
+                        newString.Add(s[(j + 1) * 2 * (numRows - 1) - row]);
+                }
+            }
+            return string.Concat(newString);
+        }
+
+        #endregion Problem 6
     }
 }
